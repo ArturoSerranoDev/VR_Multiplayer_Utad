@@ -49,6 +49,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             moveProvider.enabled = false;
             turnProvider.enabled = false;
             camera.enabled = false;
+            camera.GetComponent<AudioListener>().enabled = false;
         }
     }
 
