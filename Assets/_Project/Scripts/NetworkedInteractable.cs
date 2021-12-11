@@ -17,11 +17,15 @@ public class NetworkedInteractable : MonoBehaviourPunCallbacks, IPunOwnershipCal
     public bool useGravity = true;
     public UnityEvent RpcDeselect;
 
+    private Transform entityTransform;
+
 // Start is called before the first frame update
     void Awake()
     {
         m_InteractableBase = GetComponent<XRBaseInteractable>();
         rigidBody = GetComponent<Rigidbody>();
+        entityTransform = GetComponent<Transform>();
+
         m_InteractableBase.onSelectEntered.AddListener(OnSelectEnter);
         m_InteractableBase.onSelectExited.AddListener(OnSelectExit);
         m_InteractableBase.onActivate.AddListener(OnActivate);
@@ -147,5 +151,19 @@ public class NetworkedInteractable : MonoBehaviourPunCallbacks, IPunOwnershipCal
     public void OnOwnershipTransferFailed(PhotonView targetView, Player senderOfFailedRequest)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(entityTransform.position);
+            stream.SendNext(entityTransform.eulerAngles);
+        }
+        else
+        {
+            this.entityTransform.position = (Vector3)stream.ReceiveNext();
+            this.entityTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+        }
     }
 }

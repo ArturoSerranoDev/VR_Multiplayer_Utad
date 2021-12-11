@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 199794383586186380}
   - component: {fileID: 8148558826289635215}
   - component: {fileID: 7455887675196940610}
-  - component: {fileID: 5490868076713737092}
+  - component: {fileID: -1723508278872501982}
   m_Layer: 0
   m_Name: Camera Grab Interactable
   m_TagString: Untagged
@@ -302,12 +302,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 5490868076713737092}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5490868076713737092
+--- !u!114 &-1723508278872501982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,9 +315,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4303640126933860421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416c03ad3e9a2f344a5e82caf0b42840, type: 3}
+  m_Script: {fileID: 11500000, guid: 6548c37c140065041bc08ca3ea2f4622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RpcActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  RpcDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  RpcSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  useGravity: 1
+  RpcDeselect:
+    m_PersistentCalls:
+      m_Calls: []
   entityTransform: {fileID: 820334871951479129}
 --- !u!1 &7559544839562791112
 GameObject:
