@@ -52,7 +52,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             turnProvider.enabled = false;
             camera.enabled = false;
             camera.GetComponent<AudioListener>().enabled = false;
-            camera.gameObject.layer = 0;
+            headMeshRenderer.gameObject.layer = 0;
         }
     }
 
