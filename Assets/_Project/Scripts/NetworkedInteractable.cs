@@ -34,14 +34,14 @@ public class NetworkedInteractable : MonoBehaviourPunCallbacks, IPunOwnershipCal
         {
             if (rigidBody)
                 rigidBody.isKinematic = true;
-            gameObject.layer = LayerMask.NameToLayer("InHand");
+            //gameObject.layer = LayerMask.NameToLayer("InHand");
         }
 
         else
         {
             if (rigidBody && useGravity)
                 rigidBody.isKinematic = false;
-            gameObject.layer = LayerMask.NameToLayer("Interactable");
+            //gameObject.layer = LayerMask.NameToLayer("Interactable");
         }
     }
 
