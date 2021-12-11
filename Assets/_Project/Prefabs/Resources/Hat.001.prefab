@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2833346176247599976}
   - component: {fileID: 7489962922928496633}
   - component: {fileID: -7500085619986469275}
-  - component: {fileID: -6011980386501013856}
+  - component: {fileID: -3446687535659599152}
   m_Layer: 0
   m_Name: Hat.001
   m_TagString: Untagged
@@ -333,11 +333,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -6011980386501013856}
+  - {fileID: -3446687535659599152}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-6011980386501013856
+--- !u!114 &-3446687535659599152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,10 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3122478549967898686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 416c03ad3e9a2f344a5e82caf0b42840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
+  entityTransform: {fileID: 68047761529715676}
