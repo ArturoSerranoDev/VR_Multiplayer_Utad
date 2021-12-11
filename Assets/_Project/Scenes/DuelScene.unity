@@ -886,7 +886,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1028671429036459281}
     - target: {fileID: 1028671427223385078, guid: b290edf80bdae8343b289a73a07a6fc6,
         type: 3}
       propertyPath: ObservedComponents.Array.data[1]
@@ -894,3 +894,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b290edf80bdae8343b289a73a07a6fc6, type: 3}
+--- !u!114 &1028671429036459281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1028671427223385076, guid: b290edf80bdae8343b289a73a07a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028671429036459280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c608a906b09fd034ca6ee0ddc276bc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
