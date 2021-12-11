@@ -30,12 +30,22 @@ namespace Com.MyCompany.MyGame
 
                 Vector3 spawnPos = Vector3.zero;
 
-                if (PhotonNetwork.PlayerList.Length <= 1)
+                if (PhotonNetwork.PlayerList.Length == 1)
+                {
                     spawnPos = spawnPoint1.transform.position;
-                else
+                    PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
+
+                }
+                else if (PhotonNetwork.PlayerList.Length == 2)
+                {
                     spawnPos = spawnPoint2.transform.position;
+                    PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
+                }
+                else
+                {
+                    // Spectators
+                }
                 
-                PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
             }
             else
             {
