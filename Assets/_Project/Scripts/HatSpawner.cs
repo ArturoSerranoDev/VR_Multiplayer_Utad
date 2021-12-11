@@ -5,10 +5,12 @@ using Photon.Pun;
 using Photon.Realtime;
 public class HatSpawner : MonoBehaviourPunCallbacks
 {
-    [SerializeField] List<GameObject> hatPrefabs;
+    [SerializeField] private List<GameObject> hatPrefabs;
 
-    [SerializeField] List<Transform> hatSpawnPoints;
+    [SerializeField] private List<Transform> hatSpawnPoints;
 
+    [SerializeField] private GameObject cameraPrefab;
+    [SerializeField] private GameObject cameraSpawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,10 @@ public class HatSpawner : MonoBehaviourPunCallbacks
                                           position: hatSpawnPoints[i].transform.position, 
                                           rotation: Quaternion.identity);
             }
+
+            PhotonNetwork.Instantiate(prefabName: cameraPrefab.name,
+                                          position: cameraSpawnPoint.transform.position,
+                                          rotation: Quaternion.identity);
         }
     }
 
