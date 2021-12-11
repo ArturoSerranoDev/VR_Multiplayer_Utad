@@ -16,9 +16,11 @@ namespace Com.MyCompany.MyGame
     {
         [Tooltip("The prefab to use for representing the player")]
         public GameObject playerPrefab;
+        public GameObject gunPrefab;
 
-        [SerializeField] private GameObject spawnPoint1;
-        [SerializeField] private GameObject spawnPoint2;
+        [SerializeField] private GameObject playerSpawnPoint1;
+        [SerializeField] private GameObject playerSpawnPoint2;
+        [SerializeField] private GameObject gunSpawnPoint;
         #region Photon Callbacks
 
         private void Start()
@@ -46,8 +48,9 @@ namespace Com.MyCompany.MyGame
                 //    // Spectators
                 //}
 
-                spawnPos = spawnPoint2.transform.position;
+                spawnPos = playerSpawnPoint1.transform.position;
                 PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
+                PhotonNetwork.Instantiate(this.gunPrefab.name, gunSpawnPoint.transform.position, Quaternion.identity, 0);
 
             }
             else
