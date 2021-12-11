@@ -25,6 +25,8 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [SerializeField] private Transform headTransform;
     [SerializeField] private Transform leftHandTransform;
     [SerializeField] private Transform rightHandTransform;
+
+    [SerializeField] private Transform mixamoModelNeckTransform;
     [SerializeField] private Renderer headMeshRenderer;
 
     private List<XRController> controllers;
@@ -110,8 +112,10 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             this.leftHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
             this.rightHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
 
-            this.headTransform.position = (Vector3)stream.ReceiveNext();
-            this.headTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+            this.mixamoModelNeckTransform.position = (Vector3)stream.ReceiveNext();
+            this.mixamoModelNeckTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+
+
         }        
     }
 }

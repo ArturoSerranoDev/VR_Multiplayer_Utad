@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 using Photon.Pun;
 using Photon.Realtime;
-
+using Random = UnityEngine.Random;
 
 namespace Com.MyCompany.MyGame
 {
@@ -48,7 +48,8 @@ namespace Com.MyCompany.MyGame
                 //    // Spectators
                 //}
 
-                spawnPos = playerSpawnPoint1.transform.position;
+                //spawnPos = playerSpawnPoint1.transform.position;
+                spawnPos = new Vector3(Random.Range(-20, 20), 0, Random.Range(0, 20));
                 PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
                 PhotonNetwork.Instantiate(this.gunPrefab.name, gunSpawnPoint.transform.position, Quaternion.identity, 0);
 
