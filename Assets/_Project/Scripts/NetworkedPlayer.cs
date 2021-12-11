@@ -28,7 +28,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [SerializeField] private Renderer headMeshRenderer;
 
     private List<XRController> controllers;
-    
+    private bool colorSet;
     // Start is called before the first frame update
     void Awake()
     {
@@ -60,25 +60,27 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     {
         UpdateRandomHeadColor();
 
-        photonView.RPC("UpdateHeadColorInOthers", RpcTarget.OthersBuffered, 
-                                                headMeshRenderer.material.color.r, 
-                                                headMeshRenderer.material.color.g, 
+        photonView.RPC("UpdateHeadColorInOthers", RpcTarget.OthersBuffered,
+                                                headMeshRenderer.material.color.r,
+                                                headMeshRenderer.material.color.g,
                                                 headMeshRenderer.material.color.b);
-
     }
 
     private void UpdateRandomHeadColor()
     {
         headMeshRenderer.material.color = Random.ColorHSV();
+        colorSet = true;
     }
 
     [PunRPC]
     private void UpdateHeadColorInOthers(float red, float green, float blue)
     {
-        if (!photonView.IsMine)
+        if (!colorSet)
         {
             headMeshRenderer.material.color = new Color(red, green, blue);
+            colorSet = true;
         }
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
