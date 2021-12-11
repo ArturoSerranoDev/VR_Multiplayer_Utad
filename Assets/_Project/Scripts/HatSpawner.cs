@@ -14,17 +14,19 @@ public class HatSpawner : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < hatSpawnPoints.Count; i++)
+        if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate(prefabName: hatPrefabs[Random.Range(0, hatPrefabs.Count - 1)].name, 
-                                        position: hatSpawnPoints[i].transform.position, 
-                                        rotation: Quaternion.identity);
-        }
+            for (int i = 0; i < hatSpawnPoints.Count; i++)
+            {
+                PhotonNetwork.Instantiate(prefabName: hatPrefabs[Random.Range(0, hatPrefabs.Count - 1)].name, 
+                                          position: hatSpawnPoints[i].transform.position, 
+                                          rotation: Quaternion.identity);
+            }
 
-        PhotonNetwork.Instantiate(prefabName: cameraPrefab.name,
-                                        position: cameraSpawnPoint.transform.position,
-                                        rotation: Quaternion.identity);
-        
+            PhotonNetwork.Instantiate(prefabName: cameraPrefab.name,
+                                          position: cameraSpawnPoint.transform.position,
+                                          rotation: Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
