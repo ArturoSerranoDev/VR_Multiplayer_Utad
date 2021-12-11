@@ -19,14 +19,7 @@ public class NetworkedGun : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected)
-        {
-            // Make kinematic when grabbed by another player and disable when droppped
-            gunRigidbody.isKinematic = true;
-
-            // Disable gravity and enable back when droppped
-            gunRigidbody.useGravity = false;
-        }
+   
     }
 
 
