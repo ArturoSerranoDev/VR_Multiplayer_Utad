@@ -127,17 +127,8 @@ namespace Com.MyCompany.MyGame
     public override void OnJoinedRoom()
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
-        
-        // #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-        {
-            Debug.Log("We load the 'Room for 1' ");
 
-
-            // #Critical
-            // Load the Room Level.
-            PhotonNetwork.LoadLevel(1);
-        }
+        PhotonNetwork.LoadLevel(1);
     }
     #endregion
     }

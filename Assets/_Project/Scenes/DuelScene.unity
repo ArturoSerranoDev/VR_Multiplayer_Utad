@@ -263,7 +263,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &503282365
 GameObject:
@@ -433,7 +433,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1182728485
 GameObject:
@@ -466,7 +466,7 @@ Transform:
   - {fileID: 1444539621}
   - {fileID: 183451630}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1444539619
 GameObject:
@@ -602,7 +602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1696387595
 GameObject:
@@ -681,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 1028671427223385073, guid: b290edf80bdae8343b289a73a07a6fc6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1028671427223385073, guid: b290edf80bdae8343b289a73a07a6fc6,
         type: 3}
@@ -760,6 +760,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1028671427223385078, guid: b290edf80bdae8343b289a73a07a6fc6,
         type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028671427223385078, guid: b290edf80bdae8343b289a73a07a6fc6,
+        type: 3}
       propertyPath: ObservedComponents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -767,23 +772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 1028671429036459283}
+      objectReference: {fileID: 0}
     - target: {fileID: 1028671427223385078, guid: b290edf80bdae8343b289a73a07a6fc6,
         type: 3}
       propertyPath: ObservedComponents.Array.data[1]
       value: 
-      objectReference: {fileID: 1028671429036459283}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b290edf80bdae8343b289a73a07a6fc6, type: 3}
---- !u!114 &1028671429036459283 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1028671427223385077, guid: b290edf80bdae8343b289a73a07a6fc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1028671429036459280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

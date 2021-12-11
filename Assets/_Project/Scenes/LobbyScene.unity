@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b4e36029986dc45902cb9c9eb79f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayersPerRoom: 2
+  maxPlayersPerRoom: 20
 --- !u!4 &515600752
 Transform:
   m_ObjectHideFlags: 0

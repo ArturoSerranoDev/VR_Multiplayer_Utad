@@ -40,7 +40,8 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
 // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
         DontDestroyOnLoad(this.gameObject);
         
-        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+
+        if (!photonView.IsMine && PhotonNetwork.IsConnected)
         {
             leftControllerInput.enabled = false;
             rightControllerInput.enabled = false;
@@ -49,12 +50,6 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             turnProvider.enabled = false;
             camera.enabled = false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -74,14 +69,12 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
         {
             this.playerTransform.position = (Vector3)stream.ReceiveNext();
             this.playerTransform.eulerAngles = (Vector3)stream.ReceiveNext();
-            
-            // this.leftHandTransform.position = (Vector3)stream.ReceiveNext();
-            // this.rightHandTransform.position = (Vector3)stream.ReceiveNext();
-            //
-            // this.leftHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
-            // this.rightHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
-        }
-        
-        Debug.Log(photonView.name + " transform pos " + playerTransform.position);
+
+            this.leftHandTransform.position = (Vector3)stream.ReceiveNext();
+            this.rightHandTransform.position = (Vector3)stream.ReceiveNext();
+
+            this.leftHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+            this.rightHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+        }        
     }
 }
