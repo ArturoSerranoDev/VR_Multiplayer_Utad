@@ -201,7 +201,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 1028671427223385076}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -217,9 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c608a906b09fd034ca6ee0ddc276bc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunRigidbody: {fileID: 1028671427223385075}
   gunInteractable: {fileID: 1028671427223385074}
   barrelEndPoint: {fileID: 7325935568943295860, guid: c0cedbd36538c104f8f46f478ef1dbc4,
     type: 3}
+  gunTransform: {fileID: 1028671427223385073}
 --- !u!1 &1028671427640233060
 GameObject:
   m_ObjectHideFlags: 0
