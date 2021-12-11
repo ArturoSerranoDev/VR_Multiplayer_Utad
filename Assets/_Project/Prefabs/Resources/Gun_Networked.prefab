@@ -219,8 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRigidbody: {fileID: 1028671427223385075}
   gunInteractable: {fileID: 1028671427223385074}
-  barrelEndPoint: {fileID: 7325935568943295860, guid: c0cedbd36538c104f8f46f478ef1dbc4,
-    type: 3}
+  barrelEndPoint: {fileID: 1028671427640233060}
   gunTransform: {fileID: 1028671427223385073}
 --- !u!1 &1028671427640233060
 GameObject:

@@ -8,17 +8,19 @@ public class NetworkedBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+        //GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+    }
+
+    private void Update()
+    {
+        transform.Translate(transform.forward * Time.deltaTime * 3, Space.World);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("BulletOnCollision");
-        PhotonNetwork.Destroy(GetComponent<PhotonView>());
-    }
+        if (collision.gameObject.tag != "Player")
+            return;
 
-    private void OnTriggerEnter(Collider other)
-    {
         Debug.Log("BulletOnCollision");
         PhotonNetwork.Destroy(GetComponent<PhotonView>());
     }

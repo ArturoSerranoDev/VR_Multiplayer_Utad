@@ -45,7 +45,7 @@ public class NetworkedGun : MonoBehaviourPunCallbacks, IPunObservable
 
     private void ShootBullet(ActivateEventArgs arg0)
     {
-        PhotonNetwork.Instantiate("Bullet_Networked", barrelEndPoint.transform.position, quaternion.identity);
+        PhotonNetwork.Instantiate("Bullet_Networked", barrelEndPoint.transform.position, barrelEndPoint.transform.rotation);
     }
 
     public void OnSelectEnter(XRBaseInteractor obj)
