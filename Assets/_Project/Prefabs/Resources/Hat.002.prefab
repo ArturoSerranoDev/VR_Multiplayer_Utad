@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 542939332305950003}
   - component: {fileID: 2041403513039826717}
   - component: {fileID: -7306054365158035575}
-  - component: {fileID: 7833504552056175217}
+  - component: {fileID: 6078008593859365500}
   m_Layer: 0
   m_Name: Hat.002
   m_TagString: Untagged
@@ -333,11 +333,11 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7833504552056175217}
+  - {fileID: 6078008593859365500}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7833504552056175217
+--- !u!114 &6078008593859365500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +346,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4969647534592619515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416c03ad3e9a2f344a5e82caf0b42840, type: 3}
+  m_Script: {fileID: 11500000, guid: 6548c37c140065041bc08ca3ea2f4622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityTransform: {fileID: 5219986397050356545}
+  rigidbody: {fileID: 542939332305950003}
+  grabInteractable: {fileID: 2041403513039826717}
+  gunTransform: {fileID: 5219986397050356545}

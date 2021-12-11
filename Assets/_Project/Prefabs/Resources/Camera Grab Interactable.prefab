@@ -302,7 +302,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -1723508278872501982}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -318,20 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548c37c140065041bc08ca3ea2f4622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RpcActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  RpcDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
-  RpcSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  useGravity: 1
-  RpcDeselect:
-    m_PersistentCalls:
-      m_Calls: []
-  entityTransform: {fileID: 820334871951479129}
+  rigidbody: {fileID: 4779372160103172384}
+  grabInteractable: {fileID: 199794383586186380}
+  gunTransform: {fileID: 820334871951479129}
 --- !u!1 &7559544839562791112
 GameObject:
   m_ObjectHideFlags: 0
