@@ -4,6 +4,7 @@ using System.Linq;
 using Photon.Pun;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using XRController = UnityEngine.InputSystem.XR.XRController;
 
@@ -16,8 +17,12 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     private XROrigin playerXROrigin;
     [SerializeField] private ActionBasedController leftControllerInput;
     [SerializeField] private ActionBasedController rightControllerInput;
+
+    [SerializeField] private TrackedPoseDriver cameraTrackedPoseDriver;
+
     [SerializeField] private ContinuousMoveProviderBase moveProvider;
     [SerializeField] private SnapTurnProviderBase turnProvider;
+
     [SerializeField] private Camera camera;
     
     
@@ -27,6 +32,8 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [SerializeField] private Transform rightHandTransform;
 
     [SerializeField] private Renderer headMeshRenderer;
+    [SerializeField] private Renderer mixamoMeshRenderer;
+    [SerializeField] private GameObject mixamoModel;
 
     private List<XRController> controllers;
     private bool colorSet;
@@ -53,7 +60,9 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             turnProvider.enabled = false;
             camera.enabled = false;
             camera.GetComponent<AudioListener>().enabled = false;
+            cameraTrackedPoseDriver.enabled = false;
             headMeshRenderer.gameObject.layer = 0;
+            mixamoModel.layer = 0;
         }
     }
 
@@ -61,15 +70,21 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     {
         UpdateRandomHeadColor();
 
+        //photonView.RPC("UpdateHeadColorInOthers", RpcTarget.OthersBuffered,
+        //                                        headMeshRenderer.material.color.r,
+        //                                        headMeshRenderer.material.color.g,
+        //                                        headMeshRenderer.material.color.b);
+
         photonView.RPC("UpdateHeadColorInOthers", RpcTarget.OthersBuffered,
-                                                headMeshRenderer.material.color.r,
-                                                headMeshRenderer.material.color.g,
-                                                headMeshRenderer.material.color.b);
+                                                mixamoMeshRenderer.material.color.r,
+                                                mixamoMeshRenderer.material.color.g,
+                                                mixamoMeshRenderer.material.color.b);
     }
 
     private void UpdateRandomHeadColor()
     {
-        headMeshRenderer.material.color = Random.ColorHSV();
+        //headMeshRenderer.material.color = Random.ColorHSV();
+        mixamoMeshRenderer.material.color = Random.ColorHSV();
         colorSet = true;
     }
 
@@ -78,7 +93,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     {
         if (!colorSet)
         {
-            headMeshRenderer.material.color = new Color(red, green, blue);
+            mixamoMeshRenderer.material.color = new Color(red, green, blue);
             colorSet = true;
         }
 
