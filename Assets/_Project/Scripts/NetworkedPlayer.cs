@@ -22,8 +22,10 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     
     
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform headTransform;
     [SerializeField] private Transform leftHandTransform;
     [SerializeField] private Transform rightHandTransform;
+    [SerializeField] private Renderer headMeshRenderer;
 
     private List<XRController> controllers;
     
@@ -50,7 +52,30 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             turnProvider.enabled = false;
             camera.enabled = false;
             camera.GetComponent<AudioListener>().enabled = false;
+            camera.gameObject.layer = 0;
         }
+    }
+
+    private void Start()
+    {
+        UpdateRandomHeadColor();
+
+        photonView.RPC("UpdateHeadColorInOthers", RpcTarget.OthersBuffered, 
+                                                headMeshRenderer.material.color.r, 
+                                                headMeshRenderer.material.color.g, 
+                                                headMeshRenderer.material.color.b);
+
+    }
+
+    private void UpdateRandomHeadColor()
+    {
+        headMeshRenderer.material.color = Random.ColorHSV();
+    }
+
+    [PunRPC]
+    private void UpdateHeadColorInOthers(float red, float green, float blue)
+    {
+        headMeshRenderer.material.color = new Color(red,green,blue);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -65,6 +90,9 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             
             stream.SendNext(leftHandTransform.eulerAngles);
             stream.SendNext(rightHandTransform.eulerAngles);
+
+            stream.SendNext(headTransform.position);
+            stream.SendNext(headTransform.eulerAngles);
         }
         else
         {
@@ -76,6 +104,9 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
 
             this.leftHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
             this.rightHandTransform.eulerAngles = (Vector3)stream.ReceiveNext();
+
+            this.headTransform.position = (Vector3)stream.ReceiveNext();
+            this.headTransform.eulerAngles = (Vector3)stream.ReceiveNext();
         }        
     }
 }
