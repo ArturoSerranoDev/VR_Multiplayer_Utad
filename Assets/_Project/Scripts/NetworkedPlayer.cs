@@ -63,6 +63,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
             cameraTrackedPoseDriver.enabled = false;
             headMeshRenderer.gameObject.layer = 0;
             mixamoModel.layer = 0;
+            mixamoMeshRenderer.gameObject.layer = 0;
         }
     }
 
