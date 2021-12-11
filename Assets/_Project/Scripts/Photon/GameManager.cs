@@ -18,6 +18,8 @@ namespace Com.MyCompany.MyGame
         public GameObject playerPrefab;
         public GameObject gunPrefab;
 
+        [SerializeField] private PlayerRespawner respawner;
+
         [SerializeField] private GameObject playerSpawnPoint1;
         [SerializeField] private GameObject playerSpawnPoint2;
         [SerializeField] private GameObject gunSpawnPoint;
@@ -50,8 +52,12 @@ namespace Com.MyCompany.MyGame
 
                 //spawnPos = playerSpawnPoint1.transform.position;
                 spawnPos = new Vector3(Random.Range(-20, 20), 0, Random.Range(0, 20));
-                PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
+                GameObject newPlayer = PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPos, Quaternion.identity, 0);
                 PhotonNetwork.Instantiate(this.gunPrefab.name, gunSpawnPoint.transform.position, Quaternion.identity, 0);
+
+                respawner.myPlayer = newPlayer.GetComponent<NetworkedPlayer>();
+                respawner.myPlayer.onPlayerHit += respawner.DestroyAndRespawn;
+
 
             }
             else

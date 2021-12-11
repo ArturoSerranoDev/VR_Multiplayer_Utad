@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [SerializeField] private SnapTurnProviderBase turnProvider;
 
     [SerializeField] private Camera camera;
+    [SerializeField] private List<HitboxEventDispatcher> hitboxes;
     
     
     [SerializeField] private Transform playerTransform;
@@ -35,8 +37,12 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [SerializeField] private Renderer mixamoMeshRenderer;
     [SerializeField] private GameObject mixamoModel;
 
+    [SerializeField] private bool isPlayerDead;
+
     private List<XRController> controllers;
     private bool colorSet;
+    public event Action<NetworkedPlayer> onPlayerHit;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -67,6 +73,39 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
         }
     }
 
+    private void OnEnable()
+    {
+        foreach (var hitbox in hitboxes)
+        {
+            hitbox.playerHitEvent += PlayerHit;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var hitbox in hitboxes)
+        {
+            hitbox.playerHitEvent -= PlayerHit;
+        }
+    }
+
+    private void PlayerHit()
+    {
+        photonView.RPC("PlayerHitRPC", RpcTarget.All, photonView.ViewID);
+    }
+
+    [PunRPC]
+    private void PlayerHitRPC(int playerID)
+    {
+        if (photonView.ViewID != playerID)
+        {
+            return;
+        }
+
+        isPlayerDead = true;
+        onPlayerHit?.Invoke(this);
+    }
+
     private void Start()
     {
         UpdateRandomHeadColor();
@@ -85,7 +124,7 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     private void UpdateRandomHeadColor()
     {
         //headMeshRenderer.material.color = Random.ColorHSV();
-        mixamoMeshRenderer.material.color = Random.ColorHSV();
+        mixamoMeshRenderer.material.color = UnityEngine.Random.ColorHSV();
         colorSet = true;
     }
 
