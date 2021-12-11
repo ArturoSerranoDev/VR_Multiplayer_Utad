@@ -75,7 +75,10 @@ public class NetworkedPlayer : MonoBehaviourPunCallbacks,IPunObservable
     [PunRPC]
     private void UpdateHeadColorInOthers(float red, float green, float blue)
     {
-        headMeshRenderer.material.color = new Color(red,green,blue);
+        if (!photonView.IsMine)
+        {
+            headMeshRenderer.material.color = new Color(red, green, blue);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
